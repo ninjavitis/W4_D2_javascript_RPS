@@ -1,0 +1,21 @@
+.choices{
+  display:flex;
+  flex-direction: row;
+}
+
+.choice{
+  border: 1px;
+  border-color: red;
+  color: green;
+  padding: 10px;
+  
+}
+
+.selection{
+  height:200px;
+  width: 200px;
+}
+
+#menu{
+  display:flex;
+}
