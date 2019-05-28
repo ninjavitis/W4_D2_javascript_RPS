@@ -17,7 +17,7 @@ var playerSelection ="";
 var cpuSelection="";
 var wins = 0;
 var losses = 0;
-var ties = 0;
+var draws = 0;
 var winRatio = 0.0;
 var gamesPlayed = 0;
 
@@ -25,69 +25,55 @@ var gamesPlayed = 0;
 resultsDisplay.style.display = "none";
 
 
-// function game_loop(){
-//   console.log("start");
-
-//   // reset the game state
-//   resultsDisplay.style.display = "none";
-//   playerDisplay.src = "";
-//   cpuDisplay.src = "";
-
-  
-// }
-
-
 for (i=0; i < choices.length; ++i)
   {
     choices[i].addEventListener("click", function()
     {
       // set the player selection 
-      playerSelection = options[this.id];
+      playerPick = this.id;
+      playerSelection = options[playerPick];
       playerDisplay.src = playerSelection;
 
-      // get the cpus pick
-      getCPUChoice();
+      cpuPick = Math.floor(Math.random()*3);
+      cpuSelection = options[cpuPick];
+      cpuDisplay.src = cpuSelection;
 
       // unhide the results
       resultsDisplay.style.display = "block";
 
-      //win logic
-      
-
-
-
-
-
-      //update win/loss record
-      updateWins();
-
-      //
-      gamesPlayed =+ 1;
-
-
-
-
-
-
-
-
+      //win logic  
+     if (playerPick == 0 && cpuPick == 1)
+    {
+      losses ++;
+    } else if (playerPick == 0 && cpuPick == 2)
+    {
+      wins ++;
+    } else if (playerPick == 1 && cpuPick == 0)
+    {
+      wins ++;
+    } else if (playerPick == 1 && cpuPick == 2)
+    {
+      losses ++;
+    } else if (playerPick == 2 && cpuPick == 0)
+    {
+      losses ++;
+    } else if (playerPick == 2 && cpuPick == 1)
+    {
+      wins ++;
+    } else
+    {
+      draws ++;
+    }
+      gamesPlayed += 1;
+      winsDisplay.innerHTML = "Wins: " + wins;
+      losssesDisplay.innerHTML = "Losses: " + losses;
+      drawsDisplay.innerHTML = "Draws: " + draws;
+      winRatioDisplay.innerHTML = "Win Ratio: " + ((wins/gamesPlayed)*100).toFixed(2) + "%";
 
     });
-  }
+  };
 
-function getCPUChoice()
-{
-  cpuSelection = options[Math.floor(Math.random()*2)];
-  cpuDisplay.src = cpuSelection;
-}
 
-function updateWins()
-{
-  winsDisplay.innerHTML = "Wins: test";
-  losssesDisplay.innerHTML = "Losses: test";
-  drawsDisplay.innerHTML = "Draws: test";
-  winRatioDisplay.innerHTML = "Win Ratio: " + wins/gamesPlayed;
-}
 
 
 
