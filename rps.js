@@ -39,7 +39,8 @@ for (i=0; i < choices.length; ++i)
       cpuDisplay.src = cpuSelection;
 
       // unhide the results
-      resultsDisplay.style.display = "block";
+      resultsDisplay.style.display = "flex";
+      resultsDisplay.style.justifyContent = "center";
 
       //win logic  
      if (playerPick == 0 && cpuPick == 1)
